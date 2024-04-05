@@ -76,7 +76,7 @@ GROUP BY personne.sexe
 SELECT personne.nom,personne.prenom,FLOOR(DATEDIFF(CURRENT_DATE(), personne.naissance) / 365) AS age
 FROM personne
 INNER JOIN acteur ON acteur.id_personne = personne.id_personne
-WHERE DATEDIFF(CURRENT_DATE(),DATE_SUB(CURRENT_DATE(), INTERVAL 50 YEAR)) >= DATEDIFF(CURRENT_DATE(), personne.naissance)
+WHERE personne.naissance <= DATE_SUB(NOW(), INTERVAL 50 YEAR)
 ORDER BY age DESC
 
 --Acteurs ayant joué dans 3 films ou plus
